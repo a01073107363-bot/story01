@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>노란연필 이야기가 있는 풍경</title>
+  
+  <style>
+    /* 감성적이고 따뜻한 컬러 팔레트 */
+    :root {
+      --bg-warm: #fdfaf4;
+      --card-bg: #ffffff;
+      --primary: #f59e0b;
+      --primary-soft: #fef3c7;
+      --primary-dark: #b45309;
+      --accent: #e06d53;
+      --text-title: #292524;
+      --text-body: #57534e;
+      --border-color: #f3eae0;
+      --shadow-subtle: 0 10px 24px -6px rgba(0, 0, 0, 0.05), 0 4px 8px -4px rgba(0, 0, 0, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Pretendard", sans-serif;
+      background-color: var(--bg-warm);
+      color: var(--text-body);
+      line-height: 1.6;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+      padding: 0;
+    }
+
+    /* 화면 중앙 배치 및 반응형 최대 너비 설정 */
+    .container {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 32px 16px 56px 16px;
+    }
+
+    /* 헤더 스타일링 */
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+      padding: 16px 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background-color: var(--primary-soft);
+      padding: 4px 14px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      color: var(--text-title);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #78716c;
+    }
+
+    /* 스토리 카드 리스트 영역 */
+    .story-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .story-card {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-subtle);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px -4px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 모바일 화면 밖으로 넘침 방지 및 16:9 비율 유지 */
+    .image-box {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #f5eedf;
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .story-card:hover .image-box img {
+      transform: scale(1.02);
+    }
+
+    /* 텍스트 설명 구역 */
+    .caption-box {
+      padding: 20px 20px 24px 20px;
+    }
+
+    .scene-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .scene-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffedd5;
+      color: #ea580c;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+
+    .scene-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-title);
+      letter-spacing: -0.02em;
+    }
+
+    .scene-desc {
+      font-size: 1rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    /* 푸터 스타일링 */
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px dashed #e7ded3;
+      color: #a8a29e;
+      font-size: 0.85rem;
+    }
+
+    /* 작은 스마트폰 기기 반응형 최적화 */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px 14px 44px 14px;
+      }
+
+      h1 {
+        font-size: 1.55rem;
+      }
+
+      .caption-box {
+        padding: 16px 14px 18px 14px;
+      }
+
+      .scene-title {
+        font-size: 1.15rem;
+      }
+
+      .scene-desc {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">동화 이야기</span>
+      <h1>노란연필 이야기가 있는 풍경</h1>
+      <p class="subtitle">작은 연필 친구와 함께 떠나는 따뜻하고 정겨운 하루</p>
+    </header>
+
+    <main class="story-list">
+      <!-- 장면 1: 출발 -->
+      <article class="story-card">
+        <div class="image-box">
+          <img src="scene1.jpg" alt="작은 집 앞에서 파란 배낭을 메고 출발하는 모습" loading="lazy">
+        </div>
+        <div class="caption-box">
+          <div class="scene-meta">
+            <span class="scene-badge">01</span>
+            <h2 class="scene-title">출발</h2>
+          </div>
+          <p class="scene-desc">작은 집 앞에서 파란 배낭을 메고 출발하는 모습.</p>
+        </div>
+      </article>
+
+      <!-- 장면 2: 산책 -->
+      <article class="story-card">
+        <div class="image-box">
+          <img src="scene2.jpg" alt="꽃이 핀 공원의 산책길을 즐겁게 걷는 모습" loading="lazy">
+        </div>
+        <div class="caption-box">
+          <div class="scene-meta">
+            <span class="scene-badge">02</span>
+            <h2 class="scene-title">산책</h2>
+          </div>
+          <p class="scene-desc">꽃이 핀 공원의 산책길을 즐겁게 걷는 모습.</p>
+        </div>
+      </article>
+
+      <!-- 장면 3: 도서관 -->
+      <article class="story-card">
+        <div class="image-box">
+          <img src="scene3.jpg" alt="그림책을 발견하고 기뻐하는 모습" loading="lazy">
+        </div>
+        <div class="caption-box">
+          <div class="scene-meta">
+            <span class="scene-badge">03</span>
+            <h2 class="scene-title">도서관</h2>
+          </div>
+          <p class="scene-desc">그림책을 발견하고 기뻐하는 모습.</p>
+        </div>
+      </article>
+
+      <!-- 장면 4: 창가에 앉아 -->
+      <article class="story-card">
+        <div class="image-box">
+          <img src="scene4.jpg" alt="그림책을 읽는 모습. 편안한 분위기." loading="lazy">
+        </div>
+        <div class="caption-box">
+          <div class="scene-meta">
+            <span class="scene-badge">04</span>
+            <h2 class="scene-title">창가에 앉아</h2>
+          </div>
+          <p class="scene-desc">그림책을 읽는 모습. 편안한 분위기.</p>
+        </div>
+      </article>
+
+      <!-- 장면 5: 따뜻한 노을 아래 -->
+      <article class="story-card">
+        <div class="image-box">
+          <img src="scene5.jpg" alt="집으로 가는 모습" loading="lazy">
+        </div>
+        <div class="caption-box">
+          <div class="scene-meta">
+            <span class="scene-badge">05</span>
+            <h2 class="scene-title">따뜻한 노을 아래</h2>
+          </div>
+          <p class="scene-desc">집으로 가는 모습.</p>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 노란연필 이야기가 있는 풍경</p>
+    </footer>
+  </div>
+</body>
+</html>
